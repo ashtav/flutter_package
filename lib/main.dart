@@ -32,7 +32,12 @@ class _WelcomeState extends State<Welcome> {
           Container(
             color: C.red,
           ),
-          Text(MixShared.bulan[0])
+          Text(MixShared.bulan[0]),
+          GestureDetector(
+            onTap: () {
+              Fn.goto('mailto: ');
+            },
+          )
         ],
       ),
     );
