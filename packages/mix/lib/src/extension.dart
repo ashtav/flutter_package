@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 String ___sTrExtName = 'StringExtension';
 
-extension StringExtension on String {
+extension CustomStringExtension on String {
   /// ``` dart
   /// print('a4'.isNumeric); // false
   /// print('99'.isNumeric); // true

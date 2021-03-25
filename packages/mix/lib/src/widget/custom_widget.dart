@@ -62,65 +62,6 @@ class FlipH extends StatelessWidget {
   Widget build(BuildContext context) => Transform(alignment: Alignment.center, transform: Matrix4.rotationY(pi), child: icon);
 }
 
-/// `TextInputTransparent` digunakan untuk membuat Custom TextField
-class TextInputTransparent extends StatelessWidget {
-  final String hint;
-  final TextInputType keyboard;
-  final TextInputAction inputAction;
-  final Function(String) onSubmit, onChanged;
-  final bool autofocus, enabled, obsecure;
-  final FocusNode node;
-  final TextEditingController controller;
-  final TextAlign textAlign;
-  final int length, maxLines;
-  final List<TextInputFormatter> formatters;
-  final TextStyle style;
-
-  TextInputTransparent(
-      {this.hint,
-      this.keyboard,
-      this.inputAction,
-      this.onSubmit,
-      this.obsecure: false,
-      this.onChanged,
-      this.autofocus: false,
-      this.node,
-      this.controller,
-      this.textAlign,
-      this.enabled: true,
-      this.length: 255,
-      this.formatters: const [],
-      this.style,
-      this.maxLines});
-
-  @override
-  Widget build(BuildContext context) => TextField(
-        style: style,
-        keyboardType: keyboard,
-        textInputAction: inputAction,
-        onSubmitted: onSubmit,
-        onChanged: onChanged,
-        autofocus: autofocus,
-        focusNode: node,
-        obscureText: obsecure,
-        enabled: enabled,
-        textAlign: textAlign ?? TextAlign.start,
-        controller: controller,
-        maxLines: maxLines == null ? 1 : maxLines,
-        minLines: 1,
-        inputFormatters: [LengthLimitingTextInputFormatter(length)]..addAll(formatters),
-        decoration: InputDecoration(
-          hintText: hint,
-          hintStyle: style.copyWith(color: Colors.black26, fontSize: 15),
-          border: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          errorBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-        ),
-      );
-}
-
 class Button extends StatelessWidget {
   Button(
       {this.key,
@@ -303,47 +244,6 @@ class BottomSheetWidget extends StatelessWidget {
             : BorderRadius.all(Radius.circular(radius)),
         child: Container(color: backgroundColor ?? Colors.white, child: Wrap(children: <Widget>[child])),
       ),
-    );
-  }
-}
-
-/// `IconLabel(icon: Icon(), label: 'teks')`
-class IconLabel extends StatelessWidget {
-  final Icon icon;
-  final double labelSpace;
-  final String label;
-  final Color labelColor;
-  final FontWeight fontWeight;
-  final MainAxisAlignment mainAxisAlignment;
-  final MainAxisSize mainAxisSize;
-  final TextOverflow overflow;
-  final bool softWrap;
-
-  IconLabel(
-      {this.icon,
-      this.labelSpace: 7,
-      this.label,
-      this.fontWeight,
-      this.labelColor,
-      this.mainAxisAlignment: Maa.start,
-      this.mainAxisSize,
-      this.overflow,
-      this.softWrap});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: mainAxisAlignment,
-      mainAxisSize: mainAxisSize ?? Mas.max,
-      children: [
-        icon,
-        SizedBox(width: labelSpace),
-        Flexible(
-            child: Text('$label',
-                // style: Config.font.copyWith(fontWeight: fontWeight ?? FontWeight.bold, color: labelColor ?? black8),
-                overflow: overflow,
-                softWrap: softWrap))
-      ],
     );
   }
 }

@@ -1,7 +1,3 @@
-part of 'shared.dart';
-
-//
-
 class MixShared {
   static const List<String> bulan = [
     'Januari',

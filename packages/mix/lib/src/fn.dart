@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'package:mix/src/shared/shared.dart';
+import 'package:mix/src/shared.dart';
 import 'package:get/get.dart';
 import 'package:lipsum/lipsum.dart';
 
