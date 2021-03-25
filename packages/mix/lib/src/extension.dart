@@ -1,7 +1,7 @@
 import 'ansi.dart';
 import 'package:intl/intl.dart';
 
-String ___sTrExtName = 'StringExtension', ___intExtName = 'IntExtension';
+String ___sTrExtName = 'StringExtension';
 
 extension StringExtension on String {
   /// ``` dart
