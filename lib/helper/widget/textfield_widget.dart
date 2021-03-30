@@ -12,7 +12,6 @@ class TextInputTransparent extends StatelessWidget {
   final TextAlign textAlign;
   final int length, maxLines;
   final List<TextInputFormatter> formatters;
-  final TextStyle style;
 
   TextInputTransparent(
       {this.hint,
@@ -28,12 +27,11 @@ class TextInputTransparent extends StatelessWidget {
       this.enabled: true,
       this.length: 255,
       this.formatters: const [],
-      this.style,
       this.maxLines});
 
   @override
   Widget build(BuildContext context) => TextField(
-        style: style,
+        style: Config.font,
         keyboardType: keyboard,
         textInputAction: inputAction,
         onSubmitted: onSubmit,
@@ -49,7 +47,7 @@ class TextInputTransparent extends StatelessWidget {
         inputFormatters: [LengthLimitingTextInputFormatter(length)]..addAll(formatters),
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: style.copyWith(color: Colors.black26, fontSize: 15),
+          hintStyle: Config.font.copyWith(color: Colors.black26, fontSize: 15),
           border: InputBorder.none,
           focusedBorder: InputBorder.none,
           enabledBorder: InputBorder.none,

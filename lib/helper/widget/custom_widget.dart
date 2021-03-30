@@ -33,7 +33,7 @@ class IconLabel extends StatelessWidget {
         SizedBox(width: labelSpace),
         Flexible(
             child: Text('$label',
-                // style: Config.font.copyWith(fontWeight: fontWeight ?? FontWeight.bold, color: labelColor ?? black8),
+                style: Config.font.copyWith(fontWeight: fontWeight ?? FontWeight.bold, color: labelColor ?? C.black),
                 overflow: overflow,
                 softWrap: softWrap))
       ],
