@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mix/mix.dart';
+import 'package:mix/mix_config.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,13 +10,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Ashta Package',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Welcome(),
-    );
+    return MixInit(
+        config: {'font': GoogleFonts.montserrat()},
+        child: GetMaterialApp(
+          title: 'Ashta Package',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: Welcome(),
+        ));
   }
 }
 
