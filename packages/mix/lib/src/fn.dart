@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mix/mix.dart';
 
 import 'package:mix/src/shared.dart';
 import 'package:get/get.dart';
@@ -188,4 +189,26 @@ class Fn {
   /// String text = Fn.lipsum(5);
   /// ```
   static String lipsum([int numWords]) => createWord(numWords: numWords ?? 5);
+
+  /// ```dart
+  /// ScrollController _scrollCtrl = ScrollController();
+  /// Fn.scrollTo(_scrollCtrl);
+  /// ```
+  static scrollTo(ScrollController _scrollController, {int duration: 300, int delay: 200, to: 'down'}) {
+    Timer timer;
+
+    try {
+      timer = Timer(Duration(milliseconds: delay), () {
+        _scrollController.animateTo(
+          to == 'down' ? _scrollController.position.maxScrollExtent : 0,
+          curve: Curves.easeOut,
+          duration: Duration(milliseconds: duration),
+        );
+
+        timer?.cancel();
+      });
+    } catch (e) {
+      printCatch('Fn@scrollTo', e);
+    }
+  }
 }

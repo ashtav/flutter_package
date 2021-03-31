@@ -153,3 +153,20 @@ extension CustomStringExtension on String {
     }
   }
 }
+
+extension CustomIntExtension on int {
+  /// ``` dart
+  /// print('9500'.idr()); // Rp 9.500
+  /// print(9500.idr()); // Rp 9.500
+  /// ```
+  String idr({String symbol: 'Rp ', int decimal: 0}) {
+    try {
+      String str = this == null ? '0' : '$this';
+      int number = str.isEmpty ? 0 : str.toNumber;
+      return NumberFormat.currency(locale: 'id_ID', decimalDigits: decimal, symbol: symbol).format(number);
+    } catch (e) {
+      printCatch('$___sTrExtName@idr', e);
+      return '$symbol 0';
+    }
+  }
+}

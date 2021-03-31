@@ -40,6 +40,7 @@ class _WelcomeState extends State<Welcome> {
           GestureDetector(
             onTap: () {
               Fn.goto('mailto: ');
+              print(434.idr());
             },
           )
         ],

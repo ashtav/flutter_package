@@ -1,4 +1,8 @@
 class MixShared {
+  /// ``` dart
+  /// print(MixShared.bulan); // [Januari, ...]
+  /// print(MixShared.bulan.map((e) => e.substring(0, 3)).toList()); // [Jan, Feb, ...]
+  /// ```
   static const List<String> bulan = [
     'Januari',
     'Februari',

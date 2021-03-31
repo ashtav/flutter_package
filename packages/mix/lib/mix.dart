@@ -11,5 +11,6 @@ export 'src/shortcut.dart';
 export 'src/storage.dart';
 export 'src/widget/widget.dart';
 
+export 'package:animator/animator.dart';
 export 'package:get/get.dart';
 export 'package:path_provider/path_provider.dart';
