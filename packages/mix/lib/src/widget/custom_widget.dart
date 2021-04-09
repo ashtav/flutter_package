@@ -78,6 +78,7 @@ class Button extends StatelessWidget {
       this.margin,
       this.shape,
       this.enableSplash: true,
+      this.splashByBaseColor: false,
       this.border});
 
   final Key key;
@@ -89,7 +90,7 @@ class Button extends StatelessWidget {
   final BoxBorder border;
   final double elevation;
   final ShapeBorder shape;
-  final bool enableSplash;
+  final bool enableSplash, splashByBaseColor;
 
   @override
   Widget build(BuildContext context) {
@@ -108,12 +109,16 @@ class Button extends StatelessWidget {
             splashColor: !enableSplash
                 ? Colors.transparent
                 : splash == null
-                    ? Color.fromRGBO(0, 0, 0, .03)
+                    ? color == null || !splashByBaseColor
+                        ? Color.fromRGBO(0, 0, 0, .03)
+                        : color.withOpacity(.08)
                     : splash,
             highlightColor: !enableSplash
                 ? Colors.transparent
                 : highlightColor == null
-                    ? Color.fromRGBO(0, 0, 0, .03)
+                    ? color == null || !splashByBaseColor
+                        ? Color.fromRGBO(0, 0, 0, .03)
+                        : color.withOpacity(.1)
                     : highlightColor,
             onTap: onTap,
             borderRadius: radius,
@@ -269,7 +274,9 @@ class Indicator {
                       width: size,
                       child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.white), strokeWidth: 2),
                     ),
-                    message == null ? SizedBox.shrink() : Container(margin: EdgeInsets.only(top: 15), child: Text(message ?? '', style: messageStyle))
+                    message == null
+                        ? SizedBox.shrink()
+                        : Container(margin: EdgeInsets.only(top: 15), child: Text(message ?? '', style: messageStyle ?? TextStyle(color: C.white)))
                   ],
                 ),
               ),

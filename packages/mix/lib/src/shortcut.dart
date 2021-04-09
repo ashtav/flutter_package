@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // COLORS
 
 class C {
-  static const transparent = Colors.transparent;
+  static const none = Colors.transparent;
   static const white = Colors.white;
   static const red = Color(0xffff6961);
   static const blue = Color(0xff0275d8);
@@ -31,6 +31,11 @@ class C {
 
 class Br {
   /// ``` dart
+  /// border: Br.all(C.black2)
+  /// ```
+  static BoxBorder all(Color color, {double width: 1, BorderStyle style: BorderStyle.solid}) => Border.all(color: color, width: width, style: style);
+
+  /// ``` dart
   /// borderRadius: Br.radius(15)
   /// ```
   static BorderRadius radius(double value) => BorderRadius.circular(value);
@@ -40,11 +45,27 @@ class Br {
   /// ```
   static BorderSide side(Color color, {double width: 1, BorderStyle style: BorderStyle.solid}) =>
       BorderSide(color: color, width: width, style: style);
+
+  /// ``` dart
+  /// borderRadius: Br.only({'tl': 15, 'tr': 15})
+  /// ```
+  static BorderRadiusGeometry only(Map<String, double> map) => BorderRadius.only(
+      topLeft: Radius.circular(map['tl'] ?? 0),
+      topRight: Radius.circular(map['tr'] ?? 0),
+      bottomLeft: Radius.circular(map['bl'] ?? 0),
+      bottomRight: Radius.circular(map['br'] ?? 0));
+
+  /// ``` dart
+  /// borderRadius: Br.circle
+  /// ```
+  static final circle = BorderRadius.circular(99999);
 }
 
 // EdgeInsets
 
 class Ei {
+  static const none = EdgeInsets.all(0);
+
   static only({double b, double t, double l, double r}) => EdgeInsets.only(bottom: b ?? 0, top: t ?? 0, left: l ?? 0, right: r ?? 0);
 
   static all(double value) => EdgeInsets.all(value ?? 0);
@@ -89,6 +110,15 @@ class Ta {
   static const end = TextAlign.end;
   static const justify = TextAlign.justify;
   static const center = TextAlign.center;
+}
+
+// TextOverflow
+
+class Tof {
+  static const clip = TextOverflow.clip;
+  static const ellipsis = TextOverflow.ellipsis;
+  static const fade = TextOverflow.fade;
+  static const visible = TextOverflow.visible;
 }
 
 // FontWeight

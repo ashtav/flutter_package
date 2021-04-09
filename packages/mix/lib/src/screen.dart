@@ -6,7 +6,7 @@ class Screen {
   static height(context) => MediaQuery.of(context).size.height;
   static statusBar(context) => MediaQuery.of(context).padding.top;
 
-  static back([length]) => List.generate(length ?? 1, (i) => Get.back());
+  static back([length, dynamic result]) => List.generate(length ?? 1, (i) => Get.back(result: result));
 
   /// ``` dart
   /// Screen.to(PageName());

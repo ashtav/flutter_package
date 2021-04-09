@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mix/mix.dart';
@@ -211,4 +212,9 @@ class Fn {
       printCatch('Fn@scrollTo', e);
     }
   }
+
+  /// ```dart
+  /// onTap: () => Fn.copy('Lorem ipsum');
+  /// ```
+  static copy(String text) => Clipboard.setData(ClipboardData(text: text));
 }

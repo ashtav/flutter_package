@@ -34,7 +34,7 @@ class _WelcomeState extends State<Welcome> {
       body: Column(
         children: [
           Container(
-            color: C.red,
+            decoration: BoxDecoration(color: C.red, borderRadius: Br.circle),
           ),
           Text(MixShared.bulan[0]),
           GestureDetector(
