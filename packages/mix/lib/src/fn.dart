@@ -99,7 +99,11 @@ class Fn {
   /// Fn.toast('Lorem ipsum dolor sit');
   /// ```
   static toast(String text,
-      {String position: 'bottom', double fontSize: 14.0, Color textColor: Colors.white, Color background: const Color.fromRGBO(0, 0, 0, .7)}) {
+      {String position: 'bottom',
+      double fontSize: 14.0,
+      int time: 1,
+      Color textColor: Colors.white,
+      Color background: const Color.fromRGBO(0, 0, 0, .7)}) {
     Map _mapPos = {
       'top': ToastGravity.TOP,
       'topLeft': ToastGravity.TOP_LEFT,
@@ -114,6 +118,7 @@ class Fn {
 
     return Fluttertoast.showToast(
         msg: text,
+        timeInSecForIosWeb: time,
         toastLength: Toast.LENGTH_SHORT,
         gravity: _mapPos[position] ?? ToastGravity.BOTTOM,
         backgroundColor: background,
