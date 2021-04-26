@@ -31,20 +31,21 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(color: C.red, borderRadius: Br.circle),
-          ),
-          Text(MixShared.bulan[0]),
-          GestureDetector(
-            onTap: () {
-              Fn.goto('mailto: ');
-              print(434.idr());
-            },
-          )
-        ],
-      ),
+      body: GetBuilder(
+          builder: (state) => Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(border: Br.only({'t': Br.side(C.black1)})),
+                  ),
+                  Text(MixShared.bulan[0]),
+                  GestureDetector(
+                    onTap: () {
+                      Fn.goto('mailto: ');
+                      print(434.idr());
+                    },
+                  )
+                ],
+              )),
     );
   }
 }

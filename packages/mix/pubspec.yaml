@@ -15,7 +15,7 @@ dependencies:
   flutter_native_image: ^0.0.5+3
   flutter_statusbarcolor: ^0.2.3
   fluttertoast: ^7.1.1
-  get: ^3.21.3
+  get: '3.21.3'
   http: any
   intl: ^0.16.1
   lipsum: ^1.0.1

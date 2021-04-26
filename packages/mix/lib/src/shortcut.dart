@@ -36,6 +36,21 @@ class Br {
   static BoxBorder all(Color color, {double width: 1, BorderStyle style: BorderStyle.solid}) => Border.all(color: color, width: width, style: style);
 
   /// ``` dart
+  /// border: Br.only({'t': Br.side(C.black)})
+  /// ```
+  static BoxBorder only(Map<String, BorderSide> map, {Color color}) => Border(
+      top: map['t'] ?? BorderSide.none, bottom: map['b'] ?? BorderSide.none, left: map['l'] ?? BorderSide.none, right: map['r'] ?? BorderSide.none);
+
+  /// ``` dart
+  /// border: Br.except(['t'])
+  /// ```
+  static BoxBorder except([List<String> except, Color color]) => Border(
+      top: except.contains('t') ? BorderSide.none : Br.side(color ?? C.black1),
+      bottom: except.contains('b') ? BorderSide.none : Br.side(color ?? C.black1),
+      left: except.contains('l') ? BorderSide.none : Br.side(color ?? C.black1),
+      right: except.contains('r') ? BorderSide.none : Br.side(color ?? C.black1));
+
+  /// ``` dart
   /// borderRadius: Br.radius(15)
   /// ```
   static BorderRadius radius(double value) => BorderRadius.circular(value);
@@ -47,9 +62,9 @@ class Br {
       BorderSide(color: color, width: width, style: style);
 
   /// ``` dart
-  /// borderRadius: Br.only({'tl': 15, 'tr': 15})
+  /// borderRadius: Br.radOnly({'tl': 15, 'tr': 15})
   /// ```
-  static BorderRadiusGeometry only(Map<String, double> map) => BorderRadius.only(
+  static BorderRadiusGeometry radOnly(Map<String, double> map) => BorderRadius.only(
       topLeft: Radius.circular(map['tl'] ?? 0),
       topRight: Radius.circular(map['tr'] ?? 0),
       bottomLeft: Radius.circular(map['bl'] ?? 0),
