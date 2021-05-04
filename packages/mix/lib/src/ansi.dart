@@ -8,9 +8,8 @@ class Ansi {
   static purple(dynamic str) => print('\x1B[35m' + "$str" + '\x1B[0m');
 }
 
-p([dynamic o, bool runTime = false]) {
-  String r = runTime ? '(${o.runtimeType})' : '';
-  Ansi.orange(o ?? '-- ${Fn.lipsum()} $r');
+p([dynamic o]) {
+  Ansi.orange(o ?? '-- Null');
 }
 
 printCatch(runtimeType, e, {String fn, bool viewMessage: false}) async {

@@ -15,6 +15,7 @@ export 'package:animator/animator.dart';
 export 'package:get/get.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:intl/intl.dart';
+export 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 // how to import
 // 

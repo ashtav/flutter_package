@@ -73,6 +73,17 @@ class ImageUtils {
     }
   }
 
+  /// ``` dart
+  /// Uint8List data = await ImageUtils.fileToUint8List(file);
+  /// ```
+  static Future<Uint8List> fileToUint8List(File file) async {
+    try {
+      return file.readAsBytesSync();
+    } catch (e) {
+      return null;
+    }
+  }
+
   // Convert image to file
   // static Future<File> imageToFile({String imageName, String ext}) async {
   //   var bytes = await rootBundle.load('assets/$imageName.$ext');

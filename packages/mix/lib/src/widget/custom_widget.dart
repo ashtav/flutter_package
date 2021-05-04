@@ -305,7 +305,7 @@ class Modal {
   /// Modal.open(CustomWidget());
   /// ```
   ///
-  static open(Widget widget, {Function(dynamic) then}) =>
+  static Future open(Widget widget, {Function(dynamic) then}) =>
       showDialog(context: Get.overlayContext, builder: (_) => widget).then((_) => then == null ? () {} : then(_));
 
   /// Shortcut dari fungsi `showModalBottomSheet()`
@@ -314,7 +314,7 @@ class Modal {
   /// Modal.bottomSheet(CustomWidget());
   /// ```
   ///
-  static bottomSheet(Widget widget, {BuildContext context, Function(dynamic) then}) => showModalBottomSheet<dynamic>(
+  static Future bottomSheet(Widget widget, {BuildContext context, Function(dynamic) then}) => showModalBottomSheet<dynamic>(
       isScrollControlled: true,
       context: context ?? Get.overlayContext,
       backgroundColor: Colors.transparent,
