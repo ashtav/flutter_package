@@ -148,7 +148,7 @@ class Skeleton extends StatelessWidget {
       this.height: 15,
       this.width: 50,
       this.margin,
-      this.radius: 30});
+      this.radius: 0});
 
   @override
   Widget build(BuildContext context) => Container(

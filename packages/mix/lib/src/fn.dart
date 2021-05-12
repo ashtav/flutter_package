@@ -98,7 +98,7 @@ class Fn {
   /// ```dart
   /// Fn.toast('Lorem ipsum dolor sit');
   /// ```
-  static toast(String text,
+  static toast(dynamic text,
       {String position: 'bottom',
       double fontSize: 14.0,
       int time: 1,
@@ -117,7 +117,7 @@ class Fn {
     };
 
     return Fluttertoast.showToast(
-        msg: text,
+        msg: '$text',
         timeInSecForIosWeb: time,
         toastLength: Toast.LENGTH_SHORT,
         gravity: _mapPos[position] ?? ToastGravity.BOTTOM,

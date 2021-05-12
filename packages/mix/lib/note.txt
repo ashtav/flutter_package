@@ -1,0 +1,24 @@
+ERROR, WHY & SOLUTION
+
+ERROR           : Bad state: Too many elements
+WHY & SOLUTION  : Saat kita menggunakan "singleWhere" atau "firstWhere" atau fungsi serupa pastikan tidak ada data yang sama persis
+                  eg: [{}].singleWhere((e) => e.id == 1)['key'], disini tidak boleh ada id dengan nilai 1 lebih dari 1
+
+ERROR           : Unhandled Exception: setState() or markNeedsBuild() called during build.
+WHY & SOLUTION  : Biasanya karena halaman belum selesai dimuat tapi setState sudah dipanggil atau dijalankan,
+                  wrap kode yang dijalankan dengan WidgetsBinding.instance.addPostFrameCallback((_) async { ... });
+
+ERROR           : Force close saat menggunakan QR atau Barcode Scanner
+WHY & SOLUTION  : update minSdkVersion jadi lebih tinggi (sesuaikan)
+
+ERROR           : Terjadi ribuan error saat "flutter clean"
+WHY & SOLUTION  : 1. Buka pubspec.yaml kemudian ctrl / command + s
+                  2. Biasanya terjadi saat git pull dan kita belum sempat konfirmasi perubahan, periksa semua file pastikan tidak ada kode yang salah seperti ======= HEAD
+
+ERROR           : Terjadi masalah perihal package saat "flutter run --release"?
+WHY & SOLUTION  : Hapus package terkait (package yang bermasalah) di C:\flutter\.pub-cache\hosted\pub.dartlang.org, kemudian pada pubspec.yaml ctrl / command + s
+
+ERROR           : Multiple update pada GetX tidak berfungsi, eg: update(['id1','id2','etc...'])
+WHY & SOLUTION  : Periksa GetX version, gunakan versi "get: ^3.22.2" dimana saat kita hover GetBuilder, property id = String, bukan Object
+                  Periksa juga pubspec.lock dan .package, cari package get, lihat version-nya dan pastikan 3.22.2
+                  atau ubah pada pubspec.yaml get: '3.22.2' kemudian flutter pub upgrade
