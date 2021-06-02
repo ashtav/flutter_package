@@ -90,14 +90,22 @@ extension CustomStringExtension on String {
   /// print('lorem ipsum dolor'.removeStringAfter('ipsum')); // lorem
   /// ```
   String removeStringAfter(String pattern) {
-    return this == null ? '' : this.substring(0, this.indexOf(pattern));
+    try {
+      return this == null ? '' : this.substring(0, this.indexOf(pattern));
+    } catch (e) {
+      return this;
+    }
   }
 
   /// ``` dart
   /// print('lorem ipsum dolor'.removeStringBefore('ipsum')); // dolor
   /// ```
   String removeStringBefore(String pattern) {
-    return this == null ? '' : this.substring(this.lastIndexOf(pattern));
+    try {
+      return this == null ? '' : this.substring(this.lastIndexOf(pattern));
+    } catch (e) {
+      return this;
+    }
   }
 
   /// ``` dart

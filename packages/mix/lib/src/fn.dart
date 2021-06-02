@@ -17,6 +17,7 @@ _mapDateTimeFormat(DateTime dateTime, List months, List days) => {
       'd': '${dateTime.day}'.padLeft(2, '0'),
       'm': '${dateTime.month}'.padLeft(2, '0'),
       'Y': '${dateTime.year}',
+      'y': '${dateTime.year}'.substring(2),
       'h': '${dateTime.hour}'.padLeft(2, '0'),
       'i': '${dateTime.minute}'.padLeft(2, '0'),
       's': '${dateTime.second}'.padLeft(2, '0'),
