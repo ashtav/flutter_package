@@ -262,25 +262,22 @@ class Indicator {
   /// Indicator.overlay();
   /// ```
   static overlay({String message, bool dismiss: true, Function then, double size: 50, TextStyle messageStyle}) async {
-    showDialog(
-        context: Get.overlayContext,
-        barrierDismissible: dismiss,
-        builder: (_) => CenterDialog(
-              child: ZoomIn(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: size,
-                      width: size,
-                      child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.white), strokeWidth: 2),
-                    ),
-                    message == null
-                        ? SizedBox.shrink()
-                        : Container(margin: EdgeInsets.only(top: 15), child: Text(message ?? '', style: messageStyle ?? TextStyle(color: C.white)))
-                  ],
-                ),
-              ),
-            )).then((value) {
+    Get.dialog(CenterDialog(
+      child: ZoomIn(
+        child: Column(
+          children: [
+            SizedBox(
+              height: size,
+              width: size,
+              child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.white), strokeWidth: 2),
+            ),
+            message == null
+                ? SizedBox.shrink()
+                : Container(margin: EdgeInsets.only(top: 15), child: Text(message ?? '', style: messageStyle ?? TextStyle(color: C.white)))
+          ],
+        ),
+      ),
+    )).then((value) {
       if (then != null) then(value);
     });
   }
