@@ -262,22 +262,25 @@ class Indicator {
   /// Indicator.overlay();
   /// ```
   static overlay({String message, bool dismiss: true, Function then, double size: 50, TextStyle messageStyle}) async {
-    Get.dialog(CenterDialog(
-      child: ZoomIn(
-        child: Column(
-          children: [
-            SizedBox(
-              height: size,
-              width: size,
-              child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.white), strokeWidth: 2),
+    Get.dialog(
+            CenterDialog(
+              child: ZoomIn(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: size,
+                      width: size,
+                      child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.white), strokeWidth: 2),
+                    ),
+                    message == null
+                        ? SizedBox.shrink()
+                        : Container(margin: EdgeInsets.only(top: 15), child: Text(message ?? '', style: messageStyle ?? TextStyle(color: C.white)))
+                  ],
+                ),
+              ),
             ),
-            message == null
-                ? SizedBox.shrink()
-                : Container(margin: EdgeInsets.only(top: 15), child: Text(message ?? '', style: messageStyle ?? TextStyle(color: C.white)))
-          ],
-        ),
-      ),
-    )).then((value) {
+            barrierDismissible: dismiss)
+        .then((value) {
       if (then != null) then(value);
     });
   }
@@ -302,18 +305,25 @@ class Modal {
   /// Modal.open(CustomWidget());
   /// ```
   ///
-  static Future open(Widget widget, {Function(dynamic) then}) =>
-      showDialog(context: Get.overlayContext, builder: (_) => widget).then((_) => then == null ? () {} : then(_));
+  static Future open(Widget widget, {Function onInit, Function(dynamic) then}) async {
+    if (onInit != null) onInit();
+
+    showDialog(context: Get.overlayContext, builder: (_) => widget).then((_) => then == null ? () {} : then(_));
+  }
 
   /// Shortcut dari fungsi `showModalBottomSheet()`
   ///
   /// ``` dart
-  /// Modal.bottomSheet(CustomWidget());
+  /// Modal.bottomSheet(CustomWidget(), onInit: () => );
   /// ```
   ///
-  static Future bottomSheet(Widget widget, {BuildContext context, Function(dynamic) then}) => showModalBottomSheet<dynamic>(
-      isScrollControlled: true,
-      context: context ?? Get.overlayContext,
-      backgroundColor: Colors.transparent,
-      builder: (BuildContext _) => widget).then((_) => then == null ? () {} : then(_));
+  static Future bottomSheet(Widget widget, {BuildContext context, Function onInit, Function(dynamic) then}) async {
+    if (onInit != null) onInit();
+
+    showModalBottomSheet<dynamic>(
+        isScrollControlled: true,
+        context: context ?? Get.overlayContext,
+        backgroundColor: Colors.transparent,
+        builder: (BuildContext _) => widget).then((_) => then == null ? () {} : then(_));
+  }
 }
