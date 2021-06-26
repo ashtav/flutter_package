@@ -17,7 +17,7 @@ dependencies:
   fluttertoast: ^7.1.1
   get: 3.22.2
   http: any
-  intl: ^0.16.1
+  intl: ^0.17.0
   line_awesome_flutter: ^1.0.1
   lipsum: ^1.0.1
   path_provider: ^1.6.24
