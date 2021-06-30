@@ -320,7 +320,7 @@ class Modal {
   static Future bottomSheet(Widget widget, {BuildContext context, Function onInit, Function(dynamic) then}) async {
     if (onInit != null) onInit();
 
-    showModalBottomSheet<dynamic>(
+    await showModalBottomSheet<dynamic>(
         isScrollControlled: true,
         context: context ?? Get.overlayContext,
         backgroundColor: Colors.transparent,
